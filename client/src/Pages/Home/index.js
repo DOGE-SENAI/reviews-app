@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Structure from '../../components/Structure';
 import Content from '../../components/Content';
+import Search from '../../components/Search';
 import './style.css';
 
 const Home = () => {

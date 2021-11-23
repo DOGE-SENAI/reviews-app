@@ -35,10 +35,8 @@ function Login() {
                 "x-access-token": localStorage.getItem("token")
             }
         }).then((response) => {
-            if (!response.data.auth) {
-                navigate('/')
-            } else {
-				navigate('/home')
+            if (response.data.auth) {
+                navigate('/home')
             }
         })
     })

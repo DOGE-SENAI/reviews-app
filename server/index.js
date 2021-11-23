@@ -155,6 +155,7 @@ app.get("/logout", (req, res) => {
 
 app.get('/api/get', (req, res) => {
     const sqlSelect = "SELECT * FROM movie_reviews";
+
     db.query(sqlSelect, (err, result) => {
         res.send(result);
     });
