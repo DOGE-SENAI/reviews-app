@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import SignUp from '../../components/SignUp';
 import SignIn from '../../components/SignIn';
 import Structure from '../../components/Structure';
@@ -7,6 +9,8 @@ import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-s
 import './style.css';
 
 function Login() {
+
+	const navigate = useNavigate();
 
 	const [clickTab, setClickTab] = useState(true);
 	const [nameTab, setNameTab] = useState('Criar Conta');
@@ -24,6 +28,20 @@ function Login() {
 		setIconRight((state) => clickTab ? 'inline' : 'none');
 		setIconLeft((state) => clickTab ? 'none' : 'inline');
 	}, [clickTab]);
+
+	useEffect(() => {
+        axios.get("http://localhost:3001/isUserAuth", {
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            }
+        }).then((response) => {
+            if (!response.data.auth) {
+                navigate('/')
+            } else {
+				navigate('/home')
+            }
+        })
+    })
 
 	return (
 		<Structure>

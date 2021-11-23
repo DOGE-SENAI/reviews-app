@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Structure from '../../components/Structure';
+import Content from '../../components/Content';
 import './style.css';
 
 const Home = () => {
@@ -32,6 +33,8 @@ const Home = () => {
         <Structure>
             <main className="container-main-home">
                 <h1>Bem vindo(a) de volta</h1>
+
+                <Content />
 
                 <button
                     type="button"
