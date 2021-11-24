@@ -36,6 +36,7 @@ const Search = () => {
     return (
         <article className="container-search">
             <SearchBar set={setSearchTerm} />
+            
             <div className="container-movies">
                 {
                     filmes?.filter((val) => {

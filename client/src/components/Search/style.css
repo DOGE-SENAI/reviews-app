@@ -1,8 +1,7 @@
 .container-search{
     margin-top: 100px;
     width: 100%;
-
-
+    
 }
 
 .container-movies{
@@ -10,9 +9,9 @@
     margin-top: 23px;
 
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .container-movies p{

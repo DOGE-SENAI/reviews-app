@@ -1,0 +1,11 @@
+.my-input{
+    margin-left: 10px;
+    width: 50%;
+}
+
+@media only screen and (max-width: 466px){
+    .my-input{
+        margin-left: 0;
+        width: 250px;
+    }
+}

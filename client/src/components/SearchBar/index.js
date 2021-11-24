@@ -1,13 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import Form from '../Form';
+import './style.css';
 
 const SearchBar = (props) => {
 
     return (
-        <div className="w-100 d-flex align-items-center justify-content-center">
-            <div className="input-group input-group-lg w-75">
-
+        <div className="w-100 d-flex align-items-center justify-content-around flex-wrap">
+            <div className="input-group input-group-lg my-input">
                 <span className="input-group-text bg-primary border-primary" id="inputGroup-sizing-lg">
                     <FontAwesomeIcon icon={faSearch} />
                 </span>
@@ -22,6 +23,10 @@ const SearchBar = (props) => {
                     }}
                     placeholder="Search..."
                 />
+            </div>
+
+            <div className="m-5">
+                <Form />
             </div>
         </div>
     );
