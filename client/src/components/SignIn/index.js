@@ -10,7 +10,6 @@ const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const [loginAuth, setLoginAuth] = useState(false);
     const [verify, setVerify] = useState(true);
 
     Axios.defaults.withCredentials = true;
@@ -21,12 +20,10 @@ const SignIn = () => {
             password: password,
         }).then((response) => {
             if (!response.data.auth) {
-                setLoginAuth(false);
                 setVerify(false);
             } else {
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("user", username)
-                setLoginAuth(true);
                 navigate('/home');
             };
         });
