@@ -3,5 +3,16 @@
 }
 
 #mySpacing{
-    width: 400px;
+    min-width: 400px;
+}
+
+.container-notification{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 20px;
 }

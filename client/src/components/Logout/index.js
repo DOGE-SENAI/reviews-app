@@ -6,6 +6,7 @@ const Logout = () => {
 
     const logout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         navigate('/');
     };
 

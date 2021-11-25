@@ -4,7 +4,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import Form from '../Form';
 import './style.css';
 
-const SearchBar = (props) => {
+const SearchBar = ( props ) => {
 
     return (
         <div className="w-100 d-flex align-items-center justify-content-around flex-wrap">
@@ -26,7 +26,7 @@ const SearchBar = (props) => {
             </div>
 
             <div className="m-5">
-                <Form />
+                <Form openNotification={props.openNotification} />
             </div>
         </div>
     );

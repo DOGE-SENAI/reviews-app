@@ -17,7 +17,7 @@ const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const Form = () => {
+const Form = ( props ) => {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -47,7 +47,14 @@ const Form = () => {
         ]);
 
         setOpen(false);
-        document.location.reload(true);
+
+        props.openNotification(true, 'create');
+        setInterval(() => {
+            props.openNotification(false, 'create');
+        }, 2000);
+        setInterval(() => {
+            window.location.reload(true)
+        }, 2010);
     };
 
     return (

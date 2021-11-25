@@ -23,25 +23,20 @@ const theme = createTheme({
     }
 });
 
-const Card = (props) => {
+const Card = ( props ) => {
 
     const [openEdit, setOpenEdit] = useState(false);
-
     const handleClickOpenEdit = () => {
         setOpenEdit(true);
     };
-
     const handleCloseEdit = () => {
         setOpenEdit(false);
     };
-
     
     const [openDelete, setOpenDelete] = useState(false);
-
     const handleClickOpenDelete = () => {
         setOpenDelete(true);
     };
-
     const handleCloseDelete = () => {
         setOpenDelete(false);
     };
@@ -56,8 +51,7 @@ const Card = (props) => {
                 </div>
 
                 <div className="card-body bg-dark">
-                    <h6 className="card-title mb-3 fw-normal fst-italic text-light">{props.valor?.movieReview}</h6>
-
+                    <h6 className="mb-3 fw-normal fst-italic fs-5 text-light">{props.valor?.movieReview}</h6>
                     <Button
                         variant="contained"
                         onClick={handleClickOpenEdit}
@@ -94,7 +88,6 @@ const Card = (props) => {
                                     onClick={() => {
                                         props.update(props.valor?.movieName);
                                         setOpenEdit(false);
-                                        document.location.reload(true);
                                     }}
                                 >
                                     Confirmar
@@ -131,7 +124,6 @@ const Card = (props) => {
                                     onClick={() => {
                                         props.delete(props.valor?.movieName);
                                         setOpenDelete(false);
-                                        document.location.reload(true);
                                     }}
                                     style={{
                                         color: '#dc3545',

@@ -5,7 +5,7 @@ import Card from '../Card';
 import './style.css';
 
 
-const Search = () => {
+const Search = ( props ) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [filmes, setFilmes] = useState([]);
 
@@ -13,6 +13,14 @@ const Search = () => {
 
     const deleteReview = (movie) => {
         axios.delete(`http://localhost:3001/api/delete/${movie}`);
+
+        props.openNotification(true, 'delete');
+        setInterval(() => {
+            props.openNotification(false, 'delete');
+        }, 2000);
+        setInterval(() => {
+            window.location.reload(true);
+        }, 2010);
     };
 
     const updateReview = (movie) => {
@@ -23,6 +31,13 @@ const Search = () => {
 
         setNewReview("")
 
+        props.openNotification(true, 'update');
+        setInterval(() => {
+            props.openNotification(false, 'update');
+        }, 2000);
+        setInterval(() => {
+            window.location.reload(true);
+        }, 2010);
     };
 
     useEffect(() => {
@@ -35,7 +50,7 @@ const Search = () => {
 
     return (
         <article className="container-search">
-            <SearchBar set={setSearchTerm} />
+            <SearchBar set={setSearchTerm} openNotification={props.openNotification} />
             
             <div className="container-movies">
                 {
@@ -64,6 +79,7 @@ const Search = () => {
                             </div>
                         );
                     })
+
                 }
             </div>
         </article>

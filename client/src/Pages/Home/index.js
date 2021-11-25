@@ -8,7 +8,7 @@ import './style.css';
 const Home = () => {
 
     const user = localStorage.getItem("user");
-    
+
     const [isAuth, setIsAuth] = useState(false);
     const navigate = useNavigate();
 
