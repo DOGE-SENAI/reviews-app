@@ -5,6 +5,6 @@
     align-items: center;
 }
 
-.container-main-home h1{
-    margin: 30px;
-}
+.container-main-home h1 { margin: 30px; }
+
+.container-main-home h1 span { color: #0d6efd; }

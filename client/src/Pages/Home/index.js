@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Structure from '../../components/Structure';
 import Content from '../../components/Content';
-import Search from '../../components/Search';
 import './style.css';
 
 const Home = () => {
-    const navigate = useNavigate();
+
+    const user = localStorage.getItem("user");
+    
     const [isAuth, setIsAuth] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get("http://localhost:3001/isUserAuth", {
@@ -23,29 +25,15 @@ const Home = () => {
                 setIsAuth(true);
             }
         })
-    })
-
-    const logout = () => {
-        localStorage.removeItem("token");
-        navigate('/');
-    };
+    }, [])
 
     return (
         <Structure>
             <main className="container-main-home">
-                <h1>Bem vindo(a) de volta</h1>
+                <h1>Bem vindo(a) de volta <span>{user}</span></h1>
 
                 <Content />
-
-                <button
-                    type="button"
-                    className="btn btn-outline-danger"
-                    onClick={logout}
-                >
-                    Logout
-                </button>
             </main>
-            
         </Structure>
     );
 }

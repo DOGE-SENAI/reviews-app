@@ -40,7 +40,7 @@ const Search = () => {
             <div className="container-movies">
                 {
                     filmes?.filter((val) => {
-                        if (val.movieName.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        if (val.movieName.toLowerCase().startsWith(searchTerm.toLowerCase())) {
                             return (
                                 <Card
                                     name={val.movieName}

@@ -60,7 +60,7 @@ const Form = () => {
                 <span style={{marginRight: 7 }}>
                     <FontAwesomeIcon icon={faPlusSquare} />
                 </span>
-                Adiconar Filme
+                Adicionar Filme
             </button>
             <Dialog
                 open={open}

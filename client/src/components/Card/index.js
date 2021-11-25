@@ -25,14 +25,25 @@ const theme = createTheme({
 
 const Card = (props) => {
 
-    const [open, setOpen] = useState(false);
+    const [openEdit, setOpenEdit] = useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
+    const handleClickOpenEdit = () => {
+        setOpenEdit(true);
     };
 
-    const handleClose = () => {
-        setOpen(false);
+    const handleCloseEdit = () => {
+        setOpenEdit(false);
+    };
+
+    
+    const [openDelete, setOpenDelete] = useState(false);
+
+    const handleClickOpenDelete = () => {
+        setOpenDelete(true);
+    };
+
+    const handleCloseDelete = () => {
+        setOpenDelete(false);
     };
 
     return (
@@ -49,22 +60,20 @@ const Card = (props) => {
 
                     <Button
                         variant="contained"
-                        onClick={handleClickOpen}
-                        color='primary'
+                        onClick={handleClickOpenEdit}
                     >
-                        Editar Review
+                        Editar Avaliação
                     </Button>
                     <Dialog
-                        open={open}
+                        open={openEdit}
                         TransitionComponent={Transition}
                         keepMounted
-                        onClose={handleClose}
-                        aria-describedby="alert-dialog-slide-description"
+                        onClose={handleCloseEdit}
                     >
                         <div id="mySpacing">
-                            <DialogTitle>Editar Review</DialogTitle>
+                            <DialogTitle>Editar Avaliação</DialogTitle>
                             <DialogContent>
-                                <DialogContentText id="alert-dialog-slide-description">
+                                <DialogContentText>
                                     {props.valor?.movieReview}
                                 </DialogContentText>
                                 <TextField
@@ -80,11 +89,11 @@ const Card = (props) => {
                                 />
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={handleClose}>Cancelar</Button>
+                                <Button onClick={handleCloseEdit}>Cancelar</Button>
                                 <Button
                                     onClick={() => {
                                         props.update(props.valor?.movieName);
-                                        setOpen(false);
+                                        setOpenEdit(false);
                                         document.location.reload(true);
                                     }}
                                 >
@@ -95,15 +104,44 @@ const Card = (props) => {
                     </Dialog>
 
                     <button
-                        onClick={() => {
-                            props.delete(props.valor?.movieName);
-                            document.location.reload(true);
-                        }}
+                        variant="contained"
+                        onClick={handleClickOpenDelete}
                         type="button"
                         className="btn btn-outline-danger m-3 fw-bolder"
                     >
                         Deletar
                     </button>
+                    <Dialog
+                        open={openDelete}
+                        TransitionComponent={Transition}
+                        keepMounted
+                        onClose={handleCloseDelete}
+                    >
+                        <div id="mySpacing">
+                            <DialogTitle>Deletar Avaliação</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Filme: {props.valor?.movieName} <br />
+                                    Avaliação: {props.valor?.movieReview}
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleCloseDelete}>Cancelar</Button>
+                                <Button
+                                    onClick={() => {
+                                        props.delete(props.valor?.movieName);
+                                        setOpenDelete(false);
+                                        document.location.reload(true);
+                                    }}
+                                    style={{
+                                        color: '#dc3545',
+                                    }}
+                                >
+                                    Confirmar
+                                </Button>
+                            </DialogActions>
+                        </div>
+                    </Dialog>
                 </div>
             </div>
         </ThemeProvider>

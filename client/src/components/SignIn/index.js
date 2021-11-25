@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import Alert from '@mui/material/Alert';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +11,7 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
 
     const [loginAuth, setLoginAuth] = useState(false);
+    const [verify, setVerify] = useState(true);
 
     Axios.defaults.withCredentials = true;
 
@@ -20,23 +22,15 @@ const SignIn = () => {
         }).then((response) => {
             if (!response.data.auth) {
                 setLoginAuth(false);
+                setVerify(false);
             } else {
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user", username)
                 setLoginAuth(true);
                 navigate('/home');
             };
         });
     };
-
-    const userAuthenticated = () => {
-        Axios.get('http://localhost:3001/isUserAuth', {
-            headers: {
-                "x-access-token": localStorage.getItem("token"),
-            }
-        }).then((response) => {
-            console.log(response);
-        })
-    }
 
     return (
         <div className="login">
@@ -59,7 +53,7 @@ const SignIn = () => {
                     </div>
                 </div>
 
-                <div className="mb-3">
+                <div>
                     <label className="form-label fs-5">Senha:</label>
                     <div className="mb-3">
                         <input
@@ -73,8 +67,12 @@ const SignIn = () => {
                         />
                     </div>
                 </div>
+                
+                {!verify &&
+                    <Alert severity="warning" variant="outlined" style={{color: '#ff9800'}}>Usuário ou senha incorretos</Alert>
+                }
 
-                <div className="d-flex justify-content-around">
+                <div className="d-flex justify-content-around mt-3">
                     <button
                         type="button"
                         className="btn btn-primary btn-lg w-75"
@@ -84,14 +82,6 @@ const SignIn = () => {
                     </button>
                 </div>
             </form>
-
-            {loginAuth && (
-                <button onClick={userAuthenticated}>
-                    Check if authenticated
-                </button>
-            )}
-
-            {/* <h1>{loginStatus}</h1> */}
         </div>
 	);
 }
