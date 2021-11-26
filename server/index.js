@@ -46,6 +46,7 @@ const db = mysql.createConnection({
 
 // Componente Login/Logout
 
+
 app.post('/register', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
