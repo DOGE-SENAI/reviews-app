@@ -63,7 +63,7 @@ $ npm install
 
 # Inicie o seu banco de dados e coloque as informações de seu banco de dados server/index.js nas linhas 40 à 45.
 # Execute o server da aplicação
-$ npm run devStart
+$ npm run devstart
 
 ### Client ###
 # Vá para a pasta client
