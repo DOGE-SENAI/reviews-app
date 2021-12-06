@@ -91,6 +91,3 @@ $ npm start
 
  👤 [Joabe Oliveira](https://github.com/Joabe18)
 
- 👤 [João Victor](https://github.com/odrelvic)
-
- 👤 [João Fernando](https://github.com/Joaocaetano1105)
